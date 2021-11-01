@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using API.Data;
 using API.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -28,5 +29,11 @@ namespace API.Controllers
         {
            return await _context.Users.FindAsync(id);
         }
+        // [HttpDelete("{id}")]
+        // [Authorize]
+        // public async Task<ActionResult<AppUser>> DeleteUser(int id)
+        // {
+        
+        // } 
     }
 }
