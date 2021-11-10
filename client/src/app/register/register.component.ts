@@ -23,6 +23,6 @@ export class RegisterComponent implements OnInit {
     }
   }
   cancel() {
-    console.log('cancel');
+    this.cancelRegister.emit(false);
   }
 }
