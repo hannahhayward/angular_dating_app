@@ -1,6 +1,6 @@
 [
     {
-        "UserName": "Tara",
+        "Username": "Tara",
         "Gender": "female",
         "DateOfBirth": "1958-03-21",
         "KnownAs": "Tara",
@@ -19,7 +19,7 @@
         ]
     },
     {
-        "UserName": "Lois",
+        "Username": "Lois",
         "Gender": "female",
         "DateOfBirth": "1962-04-02",
         "KnownAs": "Lois",
@@ -38,7 +38,7 @@
         ]
     },
     {
-        "UserName": "Winifred",
+        "Username": "Winifred",
         "Gender": "female",
         "DateOfBirth": "1999-06-24",
         "KnownAs": "Winifred",
@@ -57,7 +57,7 @@
         ]
     },
     {
-        "UserName": "Haley",
+        "Username": "Haley",
         "Gender": "female",
         "DateOfBirth": "1952-06-09",
         "KnownAs": "Haley",
@@ -76,7 +76,7 @@
         ]
     },
     {
-        "UserName": "Marci",
+        "Username": "Marci",
         "Gender": "female",
         "DateOfBirth": "1996-11-01",
         "KnownAs": "Marci",
@@ -95,7 +95,7 @@
         ]
     },
     {
-        "UserName": "Boyd",
+        "Username": "Boyd",
         "Gender": "male",
         "DateOfBirth": "1952-06-07",
         "KnownAs": "Boyd",
@@ -114,7 +114,7 @@
         ]
     },
     {
-        "UserName": "Reyes",
+        "Username": "Reyes",
         "Gender": "male",
         "DateOfBirth": "1950-10-13",
         "KnownAs": "Reyes",
@@ -133,7 +133,7 @@
         ]
     },
     {
-        "UserName": "Burns",
+        "Username": "Burns",
         "Gender": "male",
         "DateOfBirth": "1956-08-07",
         "KnownAs": "Burns",
@@ -152,7 +152,7 @@
         ]
     },
     {
-        "UserName": "Meadows",
+        "Username": "Meadows",
         "Gender": "male",
         "DateOfBirth": "1998-06-30",
         "KnownAs": "Meadows",
@@ -171,7 +171,7 @@
         ]
     },
     {
-        "UserName": "Burke",
+        "Username": "Burke",
         "Gender": "male",
         "DateOfBirth": "1952-06-14",
         "KnownAs": "Burke",
