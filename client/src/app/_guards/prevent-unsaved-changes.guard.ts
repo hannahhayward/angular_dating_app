@@ -8,10 +8,7 @@ import { MemberEditComponent } from '../members/member-edit/member-edit.componen
 })
 export class PreventUnsavedChangesGuard implements CanDeactivate<unknown> {
   canDeactivate(
-    component: MemberEditComponent,
-    currentRoute: ActivatedRouteSnapshot,
-    currentState: RouterStateSnapshot,
-    nextState?: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    component: MemberEditComponent): boolean {
     return true;
   }
   
