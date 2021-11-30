@@ -48,26 +48,28 @@ namespace API.Controllers
             _mapper.Map(memberUpdateDto, user);
 
             _userRepository.Update(user);
-            if( await _userRepository.SaveAllAsync()) return NoContent();
+            if (await _userRepository.SaveAllAsync()) return NoContent();
             return BadRequest("failed to update user");
         }
-    [HttpPost("add-photo")]
-    public async Task<ActionResult<PhotoDto>> AddPhoto(IFormFile file) {
+        [HttpPost("add-photo")]
+        public async Task<ActionResult<PhotoDto>> AddPhoto([FromForm]IFormFile file)
+        {
             var user = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
             var result = await _photoService.AddPhotoAsync(file);
-            if(result.Error != null)return BadRequest(result.Error.Message);
+            if (result.Error != null) return BadRequest(result.Error.Message);
             var photo = new Photo
             {
                 Url = result.SecureUrl.AbsoluteUri,
                 PublicId = result.PublicId,
             };
-            if(user.Photos.Count ==0)
+            if (user.Photos.Count == 0)
             {
                 photo.IsMain = true;
             }
             user.Photos.Add(photo);
-            if(await _userRepository.SaveAllAsync())
+            if (await _userRepository.SaveAllAsync())
                 return _mapper.Map<PhotoDto>(photo);
+                
             return BadRequest("problem adding photo");
         }
     }
