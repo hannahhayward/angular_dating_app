@@ -2,13 +2,23 @@
     <h2 class="text-center text-primary">sign up</h2>
     <hr>
     <div class="form-group">
-        <input type="text" class="form-control" formControlName='username' placeholder="username">
+        <input type="text" 
+        class="form-control"
+        [class.is-invalid]='registerForm.get("username").errors && registerForm.get("username").touched'
+         formControlName='username' placeholder="username">
+         <div class="invalid-feedback">please enter a username</div>
     </div>
     <div class="form-group">
-        <input type="password" class="form-control" formControlName='password' placeholder="password">
+        <input type="password" [class.is-invalid]='registerForm.get("password").errors && registerForm.get("password").touched' class="form-control" formControlName='password' placeholder="password">
+        <div *ngIf="registerForm.get('password').hasError('required')" class="invalid-feedback">please enter a password</div>
+        <div *ngIf="registerForm.get('password').hasError('minlength')" class="invalid-feedback">password must be at least 4 characters</div>
+        <div *ngIf="registerForm.get('password').hasError('maxlength')" class="invalid-feedback">password must be at most 8 characters</div>
     </div>
     <div class="form-group">
-        <input type="password" class="form-control" formControlName='confirmPassword' placeholder="Confirm password">
+        <input type="password" [class.is-invalid]='registerForm.get("confirmPassword").errors && registerForm.get("confirmPassword").touched' class="form-control" formControlName='password' placeholder="password" class="form-control" formControlName='confirmPassword' placeholder="Confirm password">
+                <div *ngIf="registerForm.get('confirmPassword').hasError('required')" class="invalid-feedback">please re enter your password</div>
+                <div *ngIf="registerForm.get('confirmPassword').hasError('isMatching')" class="invalid-feedback">password must match</div>
+
     </div>
     <div class="form-group text-center">
         <button class="btn btn-success mr-2" type="submit">Register</button>
