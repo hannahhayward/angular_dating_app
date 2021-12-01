@@ -69,10 +69,22 @@ namespace API.Controllers
             user.Photos.Add(photo);
             if (await _userRepository.SaveAllAsync())
             {
-                return CreatedAtRoute("GetUser",new {Username = user.Username}, _mapper.Map<PhotoDto>(photo));
+                return CreatedAtRoute("GetUser", new { Username = user.Username }, _mapper.Map<PhotoDto>(photo));
             }
 
             return BadRequest("problem adding photo");
+        }
+        [HttpPut("set-main-photo/{photoId}")]
+        public async Task<ActionResult> SetMainPhoto(int photoId)
+        {
+            var user = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
+            var photo = user.Photos.FirstOrDefault(x => x.Id == photoId);
+            if (photo.IsMain) return BadRequest("this is already your main photo");
+            var currentMain = user.Photos.FirstOrDefault(x => x.IsMain);
+            if (currentMain != null) currentMain.IsMain = false;
+            photo.IsMain = true;
+            if (await _userRepository.SaveAllAsync()) return NoContent();
+            return BadRequest("failed to set main photo");
         }
     }
 }
