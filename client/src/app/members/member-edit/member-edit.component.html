@@ -3,7 +3,7 @@
         <h1>Your Profile</h1>
     </div>
     <div class="col-8">
-        <div class="alert alert-info"*ngIf="editForm.dirty">
+        <div class="alert alert-info" *ngIf="editForm.dirty">
             <strong>Information:</strong> You have made changes, any unsaved changes will be lost
         </div>
     </div>
@@ -30,7 +30,8 @@
                 </div>
             </div>
             <div class="card-footer">
-                <button class="btn btn-block btn-success" form="editForm" type="submit" [disabled]="!editForm.dirty">Save Changes</button>
+                <button class="btn btn-block btn-success" form="editForm" type="submit"
+                    [disabled]="!editForm.dirty">Save Changes</button>
             </div>
         </div>
     </div>
@@ -56,7 +57,7 @@
                 </form>
             </tab>
             <tab heading='edit Photos'>
-                <h4>photo edit will go here:</h4>
+                <app-photo-editor [member]="member"></app-photo-editor>
             </tab>
         </tabset>
     </div>
