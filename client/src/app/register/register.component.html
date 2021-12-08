@@ -1,9 +1,27 @@
 <form [formGroup]="registerForm" (ngSubmit)="register()" autocomplete="off">
     <h2 class="text-center text-primary">sign up</h2>
     <hr>
-   <app-text-inputs [formControl]='registerForm.controls["username"]' [label]='"Username"'></app-text-inputs>
-   <app-text-inputs [formControl]='registerForm.controls["password"]' [label]='"Password"' [type]='"password"'></app-text-inputs>
-   <app-text-inputs [formControl]='registerForm.controls["confirmPassword"]' [label]='"confirm Password"' [type]='"password"'></app-text-inputs>
+    <div class="form-group">
+        <label style="margin-right: 10px;" class="control-label">I am a:</label>
+        <label class="radio-inline">
+            <input type="radio" value="male" formControlName='gender'> Male
+        </label>
+        <label class="radio-inline">
+            <input type="radio" value="female" formControlName='gender' class="ml-3"> Female
+        </label>
+        <label class="radio-inline">
+            <input type="radio" value="nonBinary" formControlName='gender' class="ml-3"> Non-Binary
+        </label>
+    </div>
+    <app-text-inputs [formControl]='registerForm.controls["username"]' [label]='"Username"'></app-text-inputs>
+    <app-text-inputs [formControl]='registerForm.controls["knownAs"]' [label]='"Known As"'></app-text-inputs>
+    <app-text-inputs [formControl]='registerForm.controls["dateOfBirth"]' [label]='"Date of Birth"'></app-text-inputs>
+    <app-text-inputs [formControl]='registerForm.controls["city"]' [label]='"City"'></app-text-inputs>
+    <app-text-inputs [formControl]='registerForm.controls["country"]' [label]='"Country"'></app-text-inputs>
+    <app-text-inputs [formControl]='registerForm.controls["password"]' [label]='"Password"' [type]='"password"'>
+    </app-text-inputs>
+    <app-text-inputs [formControl]='registerForm.controls["confirmPassword"]' [label]='"confirm Password"'
+        [type]='"password"'></app-text-inputs>
     <div class="form-group text-center">
         <button class="btn btn-success mr-2" type="submit">Register</button>
         <button class="btn btn-danger mr-2" type="button" (click)="cancel()">cancel</button>
