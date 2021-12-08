@@ -11,10 +11,10 @@ import { AccountService } from '../_services/account.service';
 })
 export class RegisterComponent implements OnInit {
   @Output() cancelRegister = new EventEmitter()
-  model: any = {};
   registerForm: FormGroup;
   maxDate: Date;
-  constructor(private accountService: AccountService, public toastr: ToastrService, private fb: FormBuilder) { }
+  validationErrors: string[] = [];
+  constructor(private accountService: AccountService, public toastr: ToastrService, private fb: FormBuilder, private router: Router) { }
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   ngOnInit(): void {
@@ -44,13 +44,11 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    // this.accountService.register(this.model).subscribe(response => {
-    //   console.log(response);
-    //   this.cancel();
-    // }, error => {
-    //   this.toastr.error(error.error);
-    // })
-    console.log(this.registerForm.value);
+    this.accountService.register(this.registerForm.value).subscribe(response => {
+      this.router.navigateByUrl('/members');
+    }, error => {
+      this.validationErrors = error;
+    })
   }
   cancel() {
     this.cancelRegister.emit(false);
