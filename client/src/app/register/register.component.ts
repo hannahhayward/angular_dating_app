@@ -13,11 +13,14 @@ export class RegisterComponent implements OnInit {
   @Output() cancelRegister = new EventEmitter()
   model: any = {};
   registerForm: FormGroup;
+  maxDate: Date;
   constructor(private accountService: AccountService, public toastr: ToastrService, private fb: FormBuilder) { }
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   ngOnInit(): void {
     this.initializeForm();
+    this.maxDate = new Date();
+    this.maxDate.setFullYear(this.maxDate.getFullYear() - 18);
   }
   initializeForm() {
     this.registerForm = this.fb.group({
