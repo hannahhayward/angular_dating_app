@@ -17,7 +17,6 @@ import { TimeagoModule } from 'ngx-timeago';
   declarations: [],
   imports: [
     CommonModule,
-    TimeagoModule.forRoot(),
     PaginationModule.forRoot(),
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
@@ -25,12 +24,13 @@ import { TimeagoModule } from 'ngx-timeago';
     ButtonsModule.forRoot(),
     FileUploadModule,
     BsDatepickerModule.forRoot(),
+    TimeagoModule.forRoot(),
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
     })  ],
   exports: [
-    TimeagoModule,
     ButtonsModule,
+    TimeagoModule,
     PaginationModule,
     BsDropdownModule,
     ToastrModule,
