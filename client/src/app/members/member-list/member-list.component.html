@@ -5,16 +5,16 @@
     <form #form="ngForm" class="form-inline mb-3" (ngSubmit)="loadMembers()" autocomplete="off">
         <div class="form-group">
             <label> Age From:</label>
-            <input type="number" class="form-control ml-1" style="width: 70px;" name="minAge" [(ngModel)]="userParams.minAge">
+            <input type="number" class="form-control ml-1" style="width: 9vw;" name="minAge" [(ngModel)]="userParams.minAge">
         </div>
         <div class="form-group px-2">
             <label> Age To:</label>
-            <input type="number" class="form-control ml-1" style="width: 70px;" name="maxAge" [(ngModel)]="userParams.maxAge">
+            <input type="number" class="form-control ml-1" style="width: 9vw;" name="maxAge" [(ngModel)]="userParams.maxAge">
         </div>
         <div class="form-group px-2">
             <label> Show:</label>
-            <select name="gender" style="width: 130px;" class="form-control ml-1">
-            <option *ngFor="let gender of genderList" [value] ="gender.value">
+            <select name="gender" style="width: 10vw;" class="form-control ml-1 p-0">
+            <option *ngFor="let gender of genderList" [value] ="gender.value" class="text-dark">
                 {{gender.display}}
             </option></select>
         </div>
