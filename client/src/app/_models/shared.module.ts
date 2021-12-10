@@ -8,6 +8,7 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
+import { TimeagoModule } from 'ngx-timeago';
 
 
 
@@ -16,6 +17,7 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
   declarations: [],
   imports: [
     CommonModule,
+    TimeagoModule.forRoot(),
     PaginationModule.forRoot(),
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
@@ -27,6 +29,7 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
       positionClass: 'toast-bottom-right'
     })  ],
   exports: [
+    TimeagoModule,
     ButtonsModule,
     PaginationModule,
     BsDropdownModule,
