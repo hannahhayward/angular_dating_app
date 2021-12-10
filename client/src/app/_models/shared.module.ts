@@ -7,6 +7,8 @@ import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { FileUploadModule } from 'ng2-file-upload';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
+import { TimeagoModule } from 'ngx-timeago';
 
 
 
@@ -19,12 +21,16 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     NgxGalleryModule,
+    ButtonsModule.forRoot(),
     FileUploadModule,
     BsDatepickerModule.forRoot(),
+    TimeagoModule.forRoot(),
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
     })  ],
   exports: [
+    ButtonsModule,
+    TimeagoModule,
     PaginationModule,
     BsDropdownModule,
     ToastrModule,
