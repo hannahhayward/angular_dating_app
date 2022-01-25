@@ -45,7 +45,7 @@
         </tr>
     </table>
 </div>
-<div class="d-flex justify-content-center" *ngIf="pagination && !loading">
+<div class="d-flex justify-content-center" *ngIf="pagination && !loading && pagination.totalItems > 0">
     <pagination [boundaryLinks]="true" [totalItems]="pagination.totalItems" [itemsPerPage]="pagination.itemsPerPage"
         [(ngModel)]="pagination.currentPage" (pageChanged)="pageChanged($event)" previousText="&lsaquo;"
         nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
