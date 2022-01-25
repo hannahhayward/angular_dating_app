@@ -34,7 +34,10 @@ namespace API.Data
 
         public async Task<Message> GetMessage(int id)
         {
-            return await _context.Messages.FindAsync(id);
+            return await _context.Messages
+            .Include(u => u.Sender)
+            .Include(u => u.Recipient)
+            .SingleOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<PagedList<MessageDto>> GetMessagesForUser(MessageParams messageParams)
@@ -58,8 +61,8 @@ namespace API.Data
         public async Task<IEnumerable<MessageDto>> GetMessageThread(string currentUsername, string recipientUsername)
         {
             var messages = await _context.Messages
-            .Include( u => u.Sender).ThenInclude(p => p.Photos)
-            .Include( u => u.Recipient).ThenInclude(p => p.Photos)
+            .Include(u => u.Sender).ThenInclude(p => p.Photos)
+            .Include(u => u.Recipient).ThenInclude(p => p.Photos)
                 .Where(m => m.Recipient.Username == currentUsername && m.RecipientDeleted == false
                 && m.Sender.Username == recipientUsername
                 || m.Recipient.Username == recipientUsername
@@ -70,9 +73,10 @@ namespace API.Data
 
             var unreadMessages = messages.Where(m => m.DateRead == null && m.Recipient.Username == currentUsername).ToList();
 
-            if(unreadMessages.Any())
+            if (unreadMessages.Any())
             {
-                foreach(var message in unreadMessages){
+                foreach (var message in unreadMessages)
+                {
                     message.DateRead = DateTime.Now;
                 }
                 await _context.SaveChangesAsync();
