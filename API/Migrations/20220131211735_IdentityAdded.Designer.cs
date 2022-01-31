@@ -6,10 +6,10 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace API.Data.Migrations
+namespace API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220131210608_IdentityAdded")]
+    [Migration("20220131211735_IdentityAdded")]
     partial class IdentityAdded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
