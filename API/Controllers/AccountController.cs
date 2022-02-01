@@ -41,6 +41,10 @@ namespace API.Controllers
 
             if (!results.Succeeded) return BadRequest(results.Errors);
 
+            var roleResult = await _userManager.AddToRoleAsync(user, "Member");
+
+            if(!roleResult.Succeeded) return BadRequest(results.Errors);
+
             return new UserDto
             {
                 Username = user.UserName,
