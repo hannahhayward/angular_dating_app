@@ -41,4 +41,9 @@ export class AccountService {
     localStorage.removeItem('user');
     this.currentUserSource.next(null)
   }
+
+  getDecodedToken(token) {
+    return JSON.parse(atob(token.split('.')[1]));
+  }
+
 }
