@@ -26,15 +26,17 @@ export class MessageService {
       })
       .withAutomaticReconnect()
       .build()
-    this.hubConnection.start().catch(error => console.log(error)); 
+    this.hubConnection.start().catch(error => console.log(error));
 
     this.hubConnection.on('ReceiveMessageThread', messages => {
       this.messageThreadSource.next(messages);
     })
   }
 
-  stopHubConnectoin() {
-    this.hubConnection.stop();
+  stopHubConnection() {
+    if (this.hubConnection) {
+      this.hubConnection.stop();
+    }
   }
 
   getMessages(pageNumber, pageSize, container) {
