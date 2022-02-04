@@ -33,3 +33,12 @@
     font-size: 1.2em;
     padding: 0.8em;
 }
+
+@keyframes fa-blink{
+0% {opacity: 1;}
+100% {opacity: 0.4;}
+}
+.is-online{
+    animation: fa-blink 1.5s linear infinite;
+    color: #dc307c;
+}
