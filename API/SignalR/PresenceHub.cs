@@ -30,10 +30,11 @@ namespace API.SignalR
         {
             await _tracker.UserDisconnected(Context.User.GetUsername(), Context.ConnectionId);
             await Clients.Others.SendAsync("UserIsOffline", Context.User.GetUsername());
-            await base.OnDisconnectedAsync(exception);
 
             var currentUsers = await _tracker.GetOnlineUsers();
             await Clients.All.SendAsync("GetOnlineUsers", currentUsers);
+
+            await base.OnDisconnectedAsync(exception);
         }
     }
 }
