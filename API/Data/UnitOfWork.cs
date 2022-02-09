@@ -23,14 +23,14 @@ namespace API.Data
 
         public ILikesRepository likesRepository =>new LikesRepository(_context);
 
-        public Task<bool> Complete()
+        public async Task<bool> Complete()
         {
-            throw new NotImplementedException();
+            return await _context.SaveChangesAsync() > 0;
         }
 
         public bool HasChanges()
         {
-            throw new NotImplementedException();
+            return _context.ChangeTracker.HasChanges();
         }
     }
 }
