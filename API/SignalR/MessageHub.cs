@@ -17,7 +17,7 @@ namespace API.SignalR
         private readonly IHubContext<PresenceHub> _presenceHub;
         private readonly PresenceTracker _tracker;
         private readonly IUnitOfWork _unitOfWork;
-        public MessageHub(IMapper mapper,IUnitOfWork unitOfWork, 
+        public MessageHub(IMapper mapper, IUnitOfWork unitOfWork,
         IHubContext<PresenceHub> presenceHub, PresenceTracker tracker)
         {
             _unitOfWork = unitOfWork;
@@ -33,7 +33,11 @@ namespace API.SignalR
             await Groups.AddToGroupAsync(Context.ConnectionId, groupName);
             var group = await AddToGroup(groupName);
 
-            var messages = await _unitOfWork.messageRepository.GetMessageThread(Context.User.GetUsername(), otherUser);
+            var messages = await _unitOfWork.messageRepository
+            .GetMessageThread(Context.User.GetUsername(), otherUser);
+
+            if (_unitOfWork.HasChanges()) await _unitOfWork.Complete();
+
             await Clients.Caller.SendAsync("ReceiveMessageThread", messages);
             await Clients.Group(groupName).SendAsync("UpdatedGroup", group);
         }
@@ -73,7 +77,8 @@ namespace API.SignalR
             else
             {
                 var connections = await _tracker.GetConnectionsForUser(recipient.UserName);
-                if(connections != null){
+                if (connections != null)
+                {
                     await _presenceHub.Clients.Clients(connections).
                     SendAsync("NewMessageReceived",
                     new { username = sender.UserName, knownAs = sender.KnownAs });
@@ -99,7 +104,7 @@ namespace API.SignalR
             }
             group.Connections.Add(connection);
 
-            if( await _unitOfWork.Complete()) return group;
+            if (await _unitOfWork.Complete()) return group;
 
             throw new HubException("failed to join group");
         }
@@ -109,7 +114,7 @@ namespace API.SignalR
             var group = await _unitOfWork.messageRepository.GetGroupForConnection(Context.ConnectionId);
             var connection = group.Connections.FirstOrDefault(x => x.ConnectionId == Context.ConnectionId);
             _unitOfWork.messageRepository.RemoveConnection(connection);
-             if(await _unitOfWork.Complete()) return group;
+            if (await _unitOfWork.Complete()) return group;
 
             throw new HubException("failed to remove from group");
         }
