@@ -1,3 +1,8 @@
-.img-circle {
+.rounded-circle{
     max-height: 50px;
+    min-width: 50px;
+    object-fit: cover;
+}
+.btn-danger{
+    background-color: rgb(184, 82, 82);
 }

@@ -1,0 +1,35 @@
+.input-size{
+    width: 5vw;
+    box-shadow: 1px 2px 2px 2px #6f2ddc;
+    border-color: #6f2ddc;
+}
+.option{
+    background-color: transparent;
+}
+genderInput{
+    width: 6vw;
+}
+h2{
+      text-shadow: 2px 2px 8px #FF0000;
+}
+.pl-2{
+    padding-left: 2.5rem;
+}
+.btn{
+        box-shadow: 1px 2px 2px 2px #6610f2;
+
+}
+/* .active{
+    background-color: #6610f2;
+    border-color: #6610f2;
+} */
+button:active{
+    background-color: #6610f2;
+}
+
+
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: #6f2ddc;
+    border-color: #6f2ddc;
+}

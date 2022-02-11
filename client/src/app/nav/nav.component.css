@@ -7,3 +7,5 @@ img{
     border: 2px solid white;
     display: inline;
 }
+a:hover{
+text-shadow: #c52b6f 1px 0 10px;}

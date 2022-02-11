@@ -13,6 +13,18 @@
     overflow: hidden;
     position: relative;
 }
+.btn{
+    height: 2.5rem;
+    width: 2.5rem;
+    font-size: 1.05em;
+    padding: 0;
+}
+
+.card-img-top{
+    min-height: 10rem;
+    max-height: 10rem;
+    object-fit: cover;
+}
 .member-icons{
     position: absolute;
     bottom: -30%;
@@ -28,10 +40,6 @@
 }
 .animate {
     transition: all 0.3s ease-in-out;
-}
-.btn {
-    font-size: 1.2em;
-    padding: 0.8em;
 }
 
 @keyframes fa-blink{
